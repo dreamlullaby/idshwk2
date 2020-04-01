@@ -1,0 +1,4 @@
+pass tcp $EXTERNAL_NET any -> $HOME_NET 3399 (pcre:"/login|Initial/"; flowbits:set,is_bot; sid: 1000002;flowbits:noalert;)
+
+alert tcp $EXTERNAL_NET any -> $HOME_NET 3399 (msg:" bot founded"; pcre:"/(([1-9]?\d|1\d{2}|2[0-4]\d|25[0-5])\.){3}([1-9]?\d|1\d{2}|2[0-4]\d|25[0-5]):(([1-9]\d{0,3})|([1-5]\d{4})|(6[1-4]\d{3})|(65[1-4]{2})|(655[1-2]\d)|(6553[1-5]))/"; flowbits:isset,is_bot; sid:1000001;)
+
